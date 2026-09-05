@@ -1,0 +1,586 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Feria Manos de la Tierra · Agricultura familiar CIC</title>
+  <meta name="description" content="Historia y archivo fotográfico de la Feria Manos de la Tierra, circuito corto de comercialización vinculado a la Universidad Nacional de La Plata desde 2008.">
+  <style>
+    :root {
+      --ink: #173f35;
+      --green: #2f7255;
+      --green-soft: #5e9877;
+      --pale: #e4eee7;
+      --cream: #f4f0e7;
+      --paper: #fcfbf8;
+      --mustard: #d99a2b;
+      --plum: #735080;
+      --line: #cad4ce;
+      --text: #202a26;
+      --muted: #66706b;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    a:focus-visible {
+      outline: 3px solid var(--mustard);
+      outline-offset: 4px;
+    }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(23, 63, 53, .16);
+      background: rgba(244, 240, 231, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 48px), var(--max));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--pale);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .brand-mark::before {
+      width: 16px;
+      height: 16px;
+      left: 9px;
+      top: 9px;
+      background: var(--green-soft);
+    }
+
+    .brand-mark::after {
+      width: 7px;
+      height: 7px;
+      right: 0;
+      bottom: 3px;
+      background: var(--plum);
+      box-shadow: -24px 3px 0 var(--mustard);
+    }
+
+    .back-link {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .88rem;
+      font-weight: 700;
+    }
+
+    .back-link:hover { color: var(--plum); }
+
+    .hero {
+      overflow: hidden;
+      background: var(--cream);
+      border-left: 18px solid var(--ink);
+    }
+
+    .hero-inner {
+      width: min(calc(100% - 64px), var(--max));
+      margin: 0 auto;
+      padding: 64px 0 0;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0 0 24px;
+      color: var(--mustard);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 46px;
+      height: 4px;
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 970px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(3.3rem, 8vw, 7.8rem);
+      line-height: .9;
+      letter-spacing: -.06em;
+    }
+
+    .hero-copy {
+      max-width: 810px;
+      margin: 34px 0 46px;
+      font-size: clamp(1.13rem, 1.8vw, 1.46rem);
+      line-height: 1.48;
+    }
+
+    .hero-figure {
+      position: relative;
+      margin: 0;
+    }
+
+    .hero-figure img {
+      display: block;
+      width: 100%;
+      height: clamp(360px, 56vw, 690px);
+      object-fit: cover;
+      object-position: center 48%;
+    }
+
+    .hero-figure figcaption {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      max-width: 300px;
+      padding: 16px 20px;
+      color: var(--white);
+      background: var(--ink);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .story {
+      background: var(--paper);
+    }
+
+    .section-inner {
+      width: min(calc(100% - 64px), var(--max));
+      margin: 0 auto;
+      padding: 104px 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: .55fr 1.45fr;
+      gap: 90px;
+      align-items: start;
+    }
+
+    .section-kicker {
+      margin: 0 0 18px;
+      color: var(--plum);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 850px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.2rem, 4.3vw, 4.3rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .story-copy {
+      max-width: 720px;
+      font-size: clamp(1.08rem, 1.55vw, 1.3rem);
+    }
+
+    .story-copy p { margin: 0 0 24px; }
+
+    .facts {
+      margin: 54px 0 0;
+      padding: 0;
+      border-top: 1px solid var(--line);
+      list-style: none;
+    }
+
+    .facts li {
+      display: grid;
+      grid-template-columns: 150px 1fr;
+      gap: 24px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .facts b {
+      color: var(--mustard);
+      font-size: .78rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .facts span {
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .gallery-section {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .gallery-section .section-kicker { color: var(--mustard); }
+    .gallery-section h2 { color: var(--white); }
+
+    .gallery-intro {
+      max-width: 680px;
+      margin: 26px 0 0;
+      color: rgba(255,255,255,.72);
+      font-size: 1.05rem;
+    }
+
+    .gallery {
+      margin-top: 60px;
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 28px;
+    }
+
+    .gallery figure {
+      margin: 0;
+      align-self: start;
+    }
+
+    .gallery figure:nth-child(1) { grid-column: 1 / span 7; }
+    .gallery figure:nth-child(2) { grid-column: 9 / span 4; margin-top: 90px; }
+    .gallery figure:nth-child(3) { grid-column: 3 / span 8; margin-top: 18px; }
+    .gallery figure:nth-child(4) { grid-column: 1 / span 7; margin-top: 28px; }
+    .gallery figure:nth-child(5) { grid-column: 9 / span 4; margin-top: 110px; }
+
+    .gallery img {
+      display: block;
+      width: 100%;
+      background: var(--pale);
+      object-fit: cover;
+    }
+
+    .gallery figure:nth-child(1) img,
+    .gallery figure:nth-child(3) img,
+    .gallery figure:nth-child(4) img {
+      aspect-ratio: 4 / 3;
+    }
+
+    .gallery figure:nth-child(2) img,
+    .gallery figure:nth-child(5) img {
+      aspect-ratio: 3 / 4;
+    }
+
+    .gallery figcaption {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 14px;
+      margin-top: 13px;
+      color: rgba(255,255,255,.8);
+      font-size: .86rem;
+    }
+
+    .gallery figcaption b {
+      color: var(--mustard);
+      letter-spacing: .05em;
+    }
+
+    .reading {
+      background: var(--pale);
+    }
+
+    .reading-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 76px;
+    }
+
+    .reading-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .reading-list li {
+      padding: 24px 0;
+      border-top: 1px solid rgba(23, 63, 53, .22);
+    }
+
+    .reading-list b {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--ink);
+      font-size: 1.22rem;
+    }
+
+    .reading-list span { color: var(--muted); }
+
+    .closing {
+      margin: 66px 0 0;
+      padding-top: 46px;
+      border-top: 1px solid rgba(23, 63, 53, .22);
+      color: var(--ink);
+      font-size: clamp(2rem, 4.2vw, 4.2rem);
+      font-weight: 800;
+      line-height: 1.06;
+      letter-spacing: -.045em;
+    }
+
+    .source-note {
+      margin: 32px 0 0;
+      color: var(--muted);
+      font-size: .84rem;
+    }
+
+    footer {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 64px), var(--max));
+      min-height: 120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner span:last-child { color: var(--pale); }
+
+    @media (max-width: 850px) {
+      .story-grid,
+      .reading-grid { grid-template-columns: 1fr; gap: 38px; }
+      .gallery { gap: 20px; }
+      .gallery figure:nth-child(1),
+      .gallery figure:nth-child(3),
+      .gallery figure:nth-child(4) { grid-column: 1 / span 8; }
+      .gallery figure:nth-child(2),
+      .gallery figure:nth-child(5) { grid-column: 9 / span 4; }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner,
+      .hero-inner,
+      .section-inner,
+      .footer-inner { width: min(calc(100% - 36px), var(--max)); }
+      .header-inner { min-height: 64px; }
+      .brand span:last-child { display: none; }
+      .hero { border-left-width: 10px; }
+      .hero-inner { padding-top: 48px; }
+      .eyebrow { align-items: flex-start; gap: 12px; }
+      .eyebrow::before { width: 28px; margin-top: 9px; }
+      h1 { font-size: clamp(3.3rem, 16vw, 5rem); }
+      .hero-figure { margin-left: -18px; margin-right: -18px; }
+      .hero-figure figcaption { position: static; max-width: none; }
+      .section-inner { padding: 76px 0; }
+      .facts li { grid-template-columns: 1fr; gap: 5px; }
+      .gallery {
+        grid-template-columns: 1fr;
+        gap: 42px;
+        margin-top: 44px;
+      }
+      .gallery figure:nth-child(n) {
+        grid-column: 1;
+        margin-top: 0;
+      }
+      .gallery figure:nth-child(2) img,
+      .gallery figure:nth-child(5) img {
+        aspect-ratio: 4 / 5;
+        object-position: center 30%;
+      }
+      .footer-inner {
+        min-height: 150px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+  <link rel="stylesheet" href="/agricultura-familiar-la-plata/assets/social-strip.css">
+  <link rel="stylesheet" href="/agricultura-familiar-la-plata/assets/footer.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/agricultura-familiar-la-plata/" aria-label="Volver al inicio de la plataforma">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Agricultura familiar · CIC</span>
+      </a>
+      <a class="back-link" href="/agricultura-familiar-la-plata/#experiencias">← Volver a experiencias</a>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">Experiencia 01 · Circuito corto</p>
+        <h1>Feria Manos de la Tierra</h1>
+        <p class="hero-copy">Un espacio de comercialización directa, organización y encuentro que vincula a productores/as, emprendedores/as y elaboradores/as con la comunidad universitaria.</p>
+        <figure class="hero-figure">
+          <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2022.jpg" alt="Puestos de verduras y público recorriendo la Feria Manos de la Tierra en la Universidad Nacional de La Plata">
+          <figcaption>Feria del productor al consumidor · 2022</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <aside class="identity-strip" aria-label="Identidad y redes sociales">
+      <div class="identity-inner">
+        <div class="identity-unit">
+          <div class="identity-logo-frame">
+            <img class="identity-logo" src="/agricultura-familiar-la-plata/assets/logos/manos-de-la-tierra.jpg" alt="Logo de la Feria Manos de la Tierra">
+          </div>
+          <div>
+            <span class="identity-label">Seguí la experiencia</span>
+            <a class="instagram-link" href="https://www.instagram.com/feria.manosdelatierra/" target="_blank" rel="noopener noreferrer">@feria.manosdelatierra ↗</a>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <section class="story" aria-labelledby="historia-titulo">
+      <div class="section-inner story-grid">
+        <div>
+          <p class="section-kicker">La experiencia</p>
+          <h2 id="historia-titulo">Una trayectoria construida desde 2008</h2>
+        </div>
+        <div class="story-copy">
+          <p>La Feria Manos de la Tierra fue creada en 2008 en el ámbito de la Universidad Nacional de La Plata. Se configura como un circuito corto de comercialización que articula a productores/as, emprendedores/as y elaboradores/as.</p>
+          <p>Su recorrido reúne distintas etapas, formas de participación y modos de coordinación. En ese proceso se construyeron aprendizajes, redes y capacidades colectivas para sostener la experiencia y adaptarla a contextos cambiantes.</p>
+
+          <ul class="facts" aria-label="Datos principales de la experiencia">
+            <li><b>Inicio</b><span>2008</span></li>
+            <li><b>Modalidad</b><span>Feria universitaria y circuito corto de comercialización</span></li>
+            <li><b>Vínculo</b><span>Universidad Nacional de La Plata</span></li>
+            <li><b>Participan</b><span>Productores/as, emprendedores/as, elaboradores/as y consumidores/as</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="gallery-section" aria-labelledby="galeria-titulo">
+      <div class="section-inner">
+        <p class="section-kicker">Archivo fotográfico</p>
+        <h2 id="galeria-titulo">La feria a través de los años</h2>
+        <p class="gallery-intro">Los registros muestran la continuidad de los encuentros, la diversidad de productos y el trabajo de quienes sostienen el espacio.</p>
+
+        <div class="gallery">
+          <figure>
+            <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2019.jpg" alt="Público recorriendo puestos de verduras en la Feria Manos de la Tierra" loading="lazy">
+            <figcaption><b>2019</b><span>Una jornada de feria y encuentro alrededor de los alimentos.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2020.jpg" alt="Puestos de frutas y verduras bajo gazebos azules en la Feria Manos de la Tierra" loading="lazy">
+            <figcaption><b>2020</b><span>Productos frescos y vínculo directo con quienes los producen.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2022.jpg" alt="Vista amplia de la Feria Manos de la Tierra con puestos y visitantes" loading="lazy">
+            <figcaption><b>2022</b><span>La feria como espacio de comercialización, circulación y proximidad.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2024.jpg" alt="Feriantes junto a una mesa con alimentos, artesanías y el cartel de Manos de la Tierra" loading="lazy">
+            <figcaption><b>2024</b><span>Diversidad de producciones, saberes y oficios presentes en cada encuentro.</span></figcaption>
+          </figure>
+          <figure>
+            <img src="/agricultura-familiar-la-plata/assets/manos-de-la-tierra/feria-manos-de-la-tierra-2026.jpg" alt="Feriante con delantal verde en su puesto de Manos de la Tierra" loading="lazy">
+            <figcaption><b>2026</b><span>Una trayectoria sostenida por las personas y sus vínculos.</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="reading" aria-labelledby="lectura-titulo">
+      <div class="section-inner">
+        <div class="reading-grid">
+          <div>
+            <p class="section-kicker">Lectura de la experiencia</p>
+            <h2 id="lectura-titulo">Qué permite mirar Manos de la Tierra</h2>
+          </div>
+          <ul class="reading-list">
+            <li><b>Comercialización directa</b><span>Acerca la producción al consumo y reduce distancias entre quienes producen y quienes compran.</span></li>
+            <li><b>Organización colectiva</b><span>La continuidad de la feria depende de acuerdos, responsabilidades y capacidades compartidas.</span></li>
+            <li><b>Articulación institucional</b><span>El vínculo con la universidad forma parte de la construcción y sostenimiento de la experiencia.</span></li>
+            <li><b>Aprendizajes en el tiempo</b><span>Las transformaciones de la feria expresan respuestas colectivas frente a cambios internos y contextuales.</span></li>
+          </ul>
+        </div>
+
+        <p class="closing">Del productor al consumidor: una feria que también construye organización, aprendizaje y comunidad.</p>
+        <p class="source-note">Síntesis elaborada a partir de documentación del proyecto y del archivo fotográfico de la experiencia. Actualización: septiembre de 2026.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="project-credit">Proyecto <strong>“Fortalecimiento de entramados productivos locales: Análisis de estrategias de innovación para la producción, agregado de valor y comercialización de la Agricultura Familiar de La Plata y Gran La Plata”</strong> de <strong>la CONVOCATORIA DE IDEAS-PROYECTOS DE INVESTIGACIÓN, DESARROLLO y TRANSFERENCIA</strong> Soluciones Científico-Tecnológicas para Áreas del Gobierno Provincial - IP2024-2025.</p>
+      <p class="footer-institution">Facultad de Ciencias Veterinarias · UNLP</p>
+    </div>
+  </footer>
+</body>
+</html>

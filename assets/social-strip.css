@@ -1,0 +1,120 @@
+.identity-strip {
+  color: var(--white);
+  background: var(--ink);
+}
+
+.identity-inner {
+  width: min(calc(100% - 64px), var(--max));
+  min-height: 138px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.identity-unit {
+  display: grid;
+  grid-template-columns: 124px 1fr;
+  gap: 26px;
+  align-items: center;
+  width: 100%;
+  padding: 22px 0;
+}
+
+.identity-inner.identity-double {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+.identity-double .identity-unit + .identity-unit {
+  padding-left: 34px;
+  border-left: 1px solid rgba(255, 255, 255, .24);
+}
+
+.identity-logo-frame {
+  width: 124px;
+  height: 94px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--white);
+}
+
+.identity-logo {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.identity-label,
+.identity-name {
+  display: block;
+}
+
+.identity-label {
+  margin-bottom: 5px;
+  color: var(--mustard);
+  font-size: .76rem;
+  font-weight: 800;
+  letter-spacing: .065em;
+  text-transform: uppercase;
+}
+
+.identity-name {
+  margin-bottom: 5px;
+  color: var(--pale);
+  font-size: .9rem;
+  font-weight: 700;
+}
+
+.instagram-link {
+  display: inline-block;
+  color: var(--white);
+  border-bottom: 1px solid rgba(255, 255, 255, .42);
+  text-decoration: none;
+  font-size: clamp(1rem, 1.6vw, 1.22rem);
+  font-weight: 800;
+  line-height: 1.35;
+}
+
+.instagram-link:hover,
+.instagram-link:focus-visible {
+  color: #efb84f;
+  border-bottom-color: currentColor;
+}
+
+@media (max-width: 850px) {
+  .identity-inner.identity-double {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 12px 0;
+  }
+
+  .identity-double .identity-unit + .identity-unit {
+    padding-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, .24);
+    border-left: 0;
+  }
+}
+
+@media (max-width: 650px) {
+  .identity-inner {
+    width: min(calc(100% - 36px), var(--max));
+  }
+
+  .identity-unit {
+    grid-template-columns: 92px 1fr;
+    gap: 18px;
+  }
+
+  .identity-logo-frame {
+    width: 92px;
+    height: 76px;
+    padding: 8px;
+  }
+
+  .identity-name { font-size: .82rem; }
+  .instagram-link { overflow-wrap: anywhere; }
+}
