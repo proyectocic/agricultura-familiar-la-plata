@@ -1,0 +1,949 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Innovaciones que acercan la producción y el consumo</title>
+  <meta name="description" content="Plataforma digital del proyecto CIC sobre experiencias de agricultura familiar, comercialización y consumo en La Plata y Gran La Plata.">
+  <style>
+    :root {
+      --ink: #173f35;
+      --green: #2f7255;
+      --green-soft: #5e9877;
+      --pale: #e4eee7;
+      --cream: #f4f0e7;
+      --paper: #fcfbf8;
+      --mustard: #d99a2b;
+      --plum: #735080;
+      --line: #cad4ce;
+      --text: #202a26;
+      --muted: #66706b;
+      --white: #ffffff;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      background: var(--paper);
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--paper);
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+      text-rendering: optimizeLegibility;
+    }
+
+    a { color: inherit; }
+
+    .skip-link {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 100;
+      padding: 10px 14px;
+      color: var(--white);
+      background: var(--ink);
+      transform: translateY(-160%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(23, 63, 53, .16);
+      background: rgba(244, 240, 231, .94);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 48px), var(--max));
+      min-height: 72px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      position: relative;
+      width: 34px;
+      height: 34px;
+      flex: 0 0 auto;
+      border-radius: 50%;
+      background: var(--pale);
+    }
+
+    .brand-mark::before,
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+    }
+
+    .brand-mark::before {
+      width: 16px;
+      height: 16px;
+      left: 9px;
+      top: 9px;
+      background: var(--green-soft);
+    }
+
+    .brand-mark::after {
+      width: 7px;
+      height: 7px;
+      right: 0;
+      bottom: 3px;
+      background: var(--plum);
+      box-shadow: -24px 3px 0 var(--mustard);
+    }
+
+    nav ul {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .9rem;
+      font-weight: 700;
+    }
+
+    nav a:hover,
+    nav a:focus-visible { color: var(--plum); }
+
+    a:focus-visible {
+      outline: 3px solid var(--mustard);
+      outline-offset: 4px;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      min-height: 670px;
+      background: var(--cream);
+      border-left: 18px solid var(--ink);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 9px;
+      height: 190px;
+      background: var(--mustard);
+    }
+
+    .hero-inner {
+      position: relative;
+      width: min(calc(100% - 64px), var(--max));
+      min-height: 670px;
+      margin: 0 auto;
+      padding: 82px 0 56px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(250px, .55fr);
+      gap: 72px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      margin: 0 0 34px;
+      color: var(--mustard);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 48px;
+      height: 4px;
+      background: currentColor;
+    }
+
+    h1 {
+      max-width: 860px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(3.15rem, 6.5vw, 6.75rem);
+      line-height: .95;
+      letter-spacing: -.055em;
+    }
+
+    .hero-copy {
+      max-width: 760px;
+      margin: 42px 0 0;
+      font-size: clamp(1.1rem, 1.7vw, 1.42rem);
+      line-height: 1.48;
+    }
+
+    .hero-art {
+      position: relative;
+      min-height: 390px;
+    }
+
+    .orbit {
+      position: absolute;
+      right: 0;
+      bottom: 12px;
+      width: min(30vw, 330px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--pale);
+    }
+
+    .orbit::before {
+      content: "";
+      position: absolute;
+      inset: 25%;
+      border-radius: 50%;
+      background: var(--green-soft);
+    }
+
+    .orbit::after {
+      content: "";
+      position: absolute;
+      right: 4%;
+      bottom: 18%;
+      width: 18%;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--plum);
+      box-shadow: calc(-1 * min(23vw, 250px)) 42px 0 -5px var(--mustard);
+    }
+
+    .stats-band {
+      background: var(--ink);
+      color: var(--white);
+    }
+
+    .stats-inner {
+      width: min(calc(100% - 64px), var(--max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.35fr repeat(3, 1fr);
+      gap: 34px;
+      align-items: end;
+      padding: 44px 0 48px;
+    }
+
+    .stats-intro {
+      margin: 0;
+      color: var(--mustard);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(2.7rem, 5vw, 4.6rem);
+      line-height: .9;
+      letter-spacing: -.04em;
+    }
+
+    .stat span {
+      display: block;
+      margin-top: 12px;
+      color: var(--pale);
+      font-size: 1rem;
+    }
+
+    section { scroll-margin-top: 88px; }
+
+    .section-inner {
+      width: min(calc(100% - 64px), var(--max));
+      margin: 0 auto;
+      padding: 110px 0;
+    }
+
+    .section-kicker {
+      margin: 0 0 18px;
+      color: var(--plum);
+      font-size: .82rem;
+      font-weight: 800;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      max-width: 850px;
+      margin: 0;
+      color: var(--ink);
+      font-size: clamp(2.25rem, 4.4vw, 4.4rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+    }
+
+    .lead {
+      max-width: 760px;
+      margin: 32px 0 0;
+      font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+    }
+
+    .dimensions-intro {
+      max-width: 940px;
+      margin: 42px 0 0;
+      padding-left: 24px;
+      border-left: 5px solid var(--mustard);
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .dimensions {
+      margin-top: 42px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .dimension {
+      display: grid;
+      grid-template-columns: 62px minmax(220px, .75fr) minmax(0, 1.4fr);
+      gap: 28px;
+      align-items: start;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+      text-decoration: none;
+      cursor: pointer;
+      transition: background-color .18s ease, padding-left .18s ease, padding-right .18s ease;
+    }
+
+    .dimension:first-child { border-top: 0; }
+
+    .dimension:hover {
+      padding-left: 18px;
+      padding-right: 18px;
+      background: var(--pale);
+    }
+
+    .dimension:focus-visible {
+      position: relative;
+      z-index: 1;
+    }
+
+    .dimension b {
+      color: var(--mustard);
+      font-size: .85rem;
+      letter-spacing: .06em;
+    }
+
+    .dimension h3 {
+      margin: -4px 0 0;
+      color: var(--ink);
+      font-size: clamp(1.3rem, 2vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.16;
+      letter-spacing: -.02em;
+    }
+
+    .dimension-copy p {
+      max-width: 700px;
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .dimension-example {
+      margin-top: 14px !important;
+      color: var(--muted);
+    }
+
+    .dimension-example strong {
+      color: var(--plum);
+    }
+
+    .dimension-action {
+      display: inline-block;
+      margin-top: 18px;
+      color: var(--ink);
+      font-size: .86rem;
+      font-weight: 800;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .dimension:hover .dimension-action { color: var(--plum); }
+
+    .transversal-note {
+      margin-top: 34px;
+      padding: 26px 30px;
+      display: grid;
+      grid-template-columns: minmax(220px, .7fr) minmax(0, 1.5fr);
+      gap: 30px;
+      color: var(--ink);
+      background: var(--pale);
+      border-left: 7px solid var(--green);
+    }
+
+    .transversal-note strong {
+      font-size: 1.18rem;
+      line-height: 1.3;
+    }
+
+    .transversal-note p {
+      margin: 0;
+    }
+
+    .experiences-section { background: var(--cream); }
+
+    .experience-list {
+      margin: 62px 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 76px;
+      list-style: none;
+      counter-reset: experiences;
+    }
+
+    .experience-list li {
+      counter-increment: experiences;
+      min-height: 118px;
+      padding: 27px 0;
+      display: grid;
+      grid-template-columns: 54px 1fr;
+      align-items: start;
+      border-top: 1px solid var(--line);
+      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
+      font-weight: 700;
+      line-height: 1.28;
+    }
+
+    .experience-list li::before {
+      content: counter(experiences, decimal-leading-zero);
+      color: var(--plum);
+      font-size: .84rem;
+      letter-spacing: .05em;
+    }
+
+    .experience-list a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: start;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .experience-list a::after {
+      content: "↗";
+      color: var(--mustard);
+      font-size: 1.1rem;
+      transition: transform .18s ease;
+    }
+
+    .experience-list a:hover,
+    .experience-list a:focus-visible { color: var(--plum); }
+
+    .experience-list a:hover::after { transform: translate(3px, -3px); }
+
+    .experience-list a span {
+      grid-column: 1 / -1;
+      margin-top: -10px;
+      color: var(--muted);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .045em;
+      text-transform: uppercase;
+    }
+
+    .results-header {
+      display: grid;
+      grid-template-columns: 1fr .72fr;
+      gap: 60px;
+      align-items: end;
+    }
+
+    .results-header p {
+      margin: 0 0 5px;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .results-grid {
+      margin-top: 68px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 78px;
+    }
+
+    .result {
+      min-height: 152px;
+      padding: 30px 0;
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 18px;
+      align-items: start;
+      border-top: 1px solid var(--line);
+    }
+
+    .result strong {
+      color: var(--green);
+      font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+      line-height: .9;
+      letter-spacing: -.045em;
+    }
+
+    .result p {
+      max-width: 280px;
+      margin: 2px 0 0;
+      font-size: 1.06rem;
+      line-height: 1.38;
+    }
+
+    .words-section {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .words-section .section-kicker { color: var(--mustard); }
+    .words-section h2 { color: var(--white); }
+
+    .word-groups {
+      margin-top: 62px;
+      display: grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap: 68px;
+    }
+
+    .word-group {
+      padding-top: 22px;
+      border-top: 1px solid rgba(255, 255, 255, .32);
+    }
+
+    .word-group h3 {
+      margin: 0 0 24px;
+      color: var(--pale);
+      font-size: .78rem;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+    }
+
+    .word-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 12px 22px;
+      line-height: 1;
+    }
+
+    .word-cloud span {
+      display: inline-block;
+      font-weight: 800;
+      letter-spacing: -.035em;
+    }
+
+    .word-lg { color: var(--green-soft); font-size: clamp(2.6rem, 5.8vw, 5.9rem); }
+    .word-md { color: #b69bc0; font-size: clamp(2rem, 3.8vw, 3.8rem); }
+    .word-sm { color: #efb84f; font-size: clamp(1.5rem, 2.6vw, 2.6rem); }
+
+    .word-note {
+      margin: 48px 0 0;
+      color: rgba(255,255,255,.7);
+      font-size: .86rem;
+    }
+
+    .conclusions {
+      background: var(--pale);
+    }
+
+    .conclusion-grid {
+      margin-top: 62px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 42px;
+    }
+
+    .conclusion {
+      padding-top: 26px;
+      border-top: 5px solid var(--mustard);
+    }
+
+    .conclusion:nth-child(2) { border-color: var(--plum); }
+    .conclusion:nth-child(3) { border-color: var(--green); }
+
+    .conclusion h3 {
+      margin: 0 0 15px;
+      color: var(--ink);
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .conclusion p { margin: 0; }
+
+    .closing {
+      margin-top: 78px;
+      padding: 52px 0 0;
+      border-top: 1px solid rgba(23, 63, 53, .25);
+      color: var(--ink);
+      font-size: clamp(2rem, 4.1vw, 4rem);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -.04em;
+    }
+
+    .method {
+      background: var(--paper);
+    }
+
+    .method .section-inner {
+      padding-top: 72px;
+      padding-bottom: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+    }
+
+    .method h2 {
+      font-size: clamp(1.8rem, 3vw, 2.9rem);
+    }
+
+    .method p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      color: var(--white);
+      background: var(--ink);
+    }
+
+    .footer-inner {
+      width: min(calc(100% - 64px), var(--max));
+      min-height: 120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 32px;
+      font-size: .85rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+    }
+
+    .footer-inner span:last-child { color: var(--pale); }
+
+    @media (max-width: 900px) {
+      .header-inner { min-height: 64px; }
+      nav { display: none; }
+      .hero { min-height: auto; }
+      .hero-inner {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        padding-top: 62px;
+      }
+      .hero-art {
+        position: absolute;
+        right: -20px;
+        bottom: 20px;
+        min-height: 170px;
+        width: 170px;
+        opacity: .5;
+      }
+      .orbit { width: 170px; }
+      .stats-inner { grid-template-columns: repeat(3, 1fr); }
+      .stats-intro { grid-column: 1 / -1; }
+      .results-header { grid-template-columns: 1fr; }
+      .word-groups { grid-template-columns: 1fr; }
+      .conclusion-grid { grid-template-columns: 1fr; }
+      .method .section-inner { grid-template-columns: 1fr; }
+      .dimension {
+        grid-template-columns: 52px minmax(190px, .7fr) minmax(0, 1.3fr);
+        gap: 22px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      .header-inner,
+      .hero-inner,
+      .stats-inner,
+      .section-inner,
+      .footer-inner { width: min(calc(100% - 36px), var(--max)); }
+
+      .hero { border-left-width: 10px; }
+      .hero-inner { padding: 54px 0 46px; }
+      .eyebrow { align-items: flex-start; gap: 12px; }
+      .eyebrow::before { width: 28px; margin-top: 9px; }
+      h1 { font-size: clamp(3rem, 15vw, 4.5rem); }
+      .hero-copy { margin-top: 30px; padding-right: 22px; }
+      .stats-inner { gap: 22px 14px; padding: 36px 0; }
+      .stat strong { font-size: 2.55rem; }
+      .stat span { font-size: .86rem; }
+      .section-inner { padding: 78px 0; }
+      .dimensions-intro { padding-left: 18px; }
+      .dimension {
+        grid-template-columns: 42px 1fr;
+        gap: 12px 16px;
+        padding: 26px 0;
+      }
+      .dimension h3 { margin-top: -3px; }
+      .dimension-copy { grid-column: 2; }
+      .transversal-note {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 24px;
+      }
+      .experience-list { grid-template-columns: 1fr; margin-top: 46px; }
+      .experience-list li { min-height: 94px; }
+      .results-grid { grid-template-columns: 1fr; margin-top: 42px; }
+      .result { grid-template-columns: 112px 1fr; min-height: 128px; }
+      .result strong { font-size: 2.8rem; }
+      .word-groups { gap: 44px; }
+      .closing { margin-top: 58px; }
+      .footer-inner {
+        min-height: 150px;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 10px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+  </style>
+  <link rel="stylesheet" href="/agricultura-familiar-la-plata/assets/footer.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Agricultura familiar · CIC</span>
+      </a>
+      <nav aria-label="Navegación principal">
+        <ul>
+          <li><a href="#plataforma">La plataforma</a></li>
+          <li><a href="#experiencias">Experiencias</a></li>
+          <li><a href="#resultados">Resultados</a></li>
+          <li><a href="#hallazgos">Hallazgos</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="hero-inner">
+        <div>
+          <p class="eyebrow">La Plata y Gran La Plata</p>
+          <h1>Innovaciones que acercan la producción y el consumo</h1>
+          <p class="hero-copy">Experiencias de producción, agregado de valor y comercialización construidas junto a organizaciones, consumidores y la universidad.</p>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit"></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="stats-band" aria-label="Síntesis del relevamiento">
+      <div class="stats-inner">
+        <p class="stats-intro">Una mirada situada sobre los circuitos de proximidad</p>
+        <div class="stat"><strong>6</strong><span>experiencias</span></div>
+        <div class="stat"><strong>70</strong><span>encuestas</span></div>
+        <div class="stat"><strong>5</strong><span>dimensiones</span></div>
+      </div>
+    </div>
+
+    <section id="plataforma">
+      <div class="section-inner">
+        <p class="section-kicker">La plataforma</p>
+        <h2>Un espacio para reconocer, vincular y fortalecer experiencias</h2>
+        <p class="lead">La plataforma reúne información del relevamiento realizado con consumidores/as, productores/as y comercializadores/as. Busca visibilizar aprendizajes, puntos de encuentro y desafíos de los mercados vinculados con la agricultura familiar.</p>
+
+        <p class="dimensions-intro">Las dimensiones no funcionan como compartimentos aislados. En cada experiencia se articulan decisiones comerciales, capacidades organizacionales, instituciones, formas de comunicación y prácticas de consumo. Esta lectura permite reconocer innovaciones situadas y también las condiciones que favorecen o limitan su sostenibilidad.</p>
+
+        <div class="dimensions" aria-label="Dimensiones analizadas">
+          <a class="dimension" href="/agricultura-familiar-la-plata/dimensiones/gestion-e-innovacion-comercial/" aria-label="Explorar Gestión e innovación comercial">
+            <b>01</b>
+            <h3>Gestión e innovación comercial</h3>
+            <div class="dimension-copy">
+              <p>Reúne las decisiones y herramientas que permiten sostener cada dispositivo: planificación, costos y precios, abastecimiento, logística, información, tecnologías y coordinación entre oferta y demanda.</p>
+              <p class="dimension-example"><strong>En las experiencias:</strong> La Justa articula pedidos, acopio, distribución y nodos; los Almacenes Cooperativos agregan continuidad mediante puntos permanentes de venta.</p>
+              <span class="dimension-action">Explorar dimensión →</span>
+            </div>
+          </a>
+          <a class="dimension" href="/agricultura-familiar-la-plata/dimensiones/comunicacion-y-confianza/" aria-label="Explorar Comunicación y construcción de confianza">
+            <b>02</b>
+            <h3>Comunicación y construcción de confianza</h3>
+            <div class="dimension-copy">
+              <p>La comunicación no se limita a difundir. Hace visibles los procesos de producción y elaboración, las identidades de las organizaciones y los valores que orientan los intercambios.</p>
+              <p class="dimension-example"><strong>En las experiencias:</strong> en las ferias, el encuentro directo permite conocer a quienes producen; en las redes y en esta plataforma, esa proximidad puede ampliarse y sostenerse.</p>
+              <span class="dimension-action">Explorar dimensión →</span>
+            </div>
+          </a>
+          <a class="dimension" href="/agricultura-familiar-la-plata/dimensiones/construccion-y-acceso-a-mercados/" aria-label="Explorar Construcción y acceso a mercados">
+            <b>03</b>
+            <h3>Construcción y acceso a mercados</h3>
+            <div class="dimension-copy">
+              <p>Los mercados se entienden como construcciones sociales e institucionales. Requieren acuerdos, reglas, infraestructura, formas de coordinación y políticas que hagan posibles intercambios más justos.</p>
+              <p class="dimension-example"><strong>En las experiencias:</strong> ferias, nodos, almacenes y espacios universitarios crean canales de proximidad y alternativas de acceso para la agricultura familiar.</p>
+              <span class="dimension-action">Explorar dimensión →</span>
+            </div>
+          </a>
+          <a class="dimension" href="/agricultura-familiar-la-plata/dimensiones/redes-y-capacidades-organizacionales/" aria-label="Explorar Redes y capacidades organizacionales">
+            <b>04</b>
+            <h3>Redes y capacidades organizacionales</h3>
+            <div class="dimension-copy">
+              <p>Analiza cómo la cooperación, la participación, la distribución de roles, la toma de decisiones y los aprendizajes colectivos fortalecen la capacidad de sostener y adaptar las iniciativas.</p>
+              <p class="dimension-example"><strong>En las experiencias:</strong> productores/as, cooperativas, organizaciones, equipos universitarios y consumidores/as comparten recursos, conocimientos y responsabilidades.</p>
+              <span class="dimension-action">Explorar dimensión →</span>
+            </div>
+          </a>
+          <a class="dimension" href="/agricultura-familiar-la-plata/dimensiones/consumo-y-ciudadania-alimentaria/" aria-label="Explorar Consumo y ciudadanía alimentaria">
+            <b>05</b>
+            <h3>Consumo y ciudadanía alimentaria</h3>
+            <div class="dimension-copy">
+              <p>Considera a consumidores y consumidoras como participantes del sistema alimentario. Sus prácticas se relacionan con el acceso, la información, la confianza y las condiciones sociales y ambientales en las que se producen los alimentos.</p>
+              <p class="dimension-example"><strong>En las experiencias:</strong> la compra directa o de proximidad permite conocer el origen de los productos y reconocer el trabajo que hay detrás de cada alimento.</p>
+              <span class="dimension-action">Explorar dimensión →</span>
+            </div>
+          </a>
+        </div>
+
+        <aside class="transversal-note" aria-label="Dimensión transversal">
+          <strong>Una mirada transversal: producción, agregado de valor y sostenibilidad</strong>
+          <p>Las prácticas productivas, la transición agroecológica, la calidad, la inocuidad y el enfoque de Una Salud atraviesan las cinco dimensiones. La Sala Comunitaria muestra con especial claridad cómo transformar la producción, reducir pérdidas y agregar valor mediante procesos colectivos y seguros.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="experiences-section" id="experiencias">
+      <div class="section-inner">
+        <p class="section-kicker">Experiencias relevadas</p>
+        <h2>Seis iniciativas que construyen otras formas de producir y comercializar</h2>
+        <ol class="experience-list">
+          <li><a href="/agricultura-familiar-la-plata/experiencias/manos-de-la-tierra/">Feria Manos de la Tierra <span>Ver historia y fotografías</span></a></li>
+          <li><a href="/agricultura-familiar-la-plata/experiencias/la-veredita/">Mercado Popular La Veredita <span>Ver historia y fotografías</span></a></li>
+          <li><a href="/agricultura-familiar-la-plata/experiencias/paseo-economia-social-solidaria/">Paseo de la Economía Social y Solidaria <span>Ver historia y fotografías</span></a></li>
+          <li><a href="/agricultura-familiar-la-plata/experiencias/la-justa/">Comercializadora La Justa <span>Ver historia y fotografías</span></a></li>
+          <li><a href="/agricultura-familiar-la-plata/experiencias/almacenes-cooperativos/">Almacenes Cooperativos <span>Ver historia y fotografías</span></a></li>
+          <li><a href="/agricultura-familiar-la-plata/experiencias/sala-comunitaria/">Sala Comunitaria de Elaboración con Agregado de Valor <span>Ver historia y fotografías</span></a></li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="resultados">
+      <div class="section-inner">
+        <div class="results-header">
+          <div>
+            <p class="section-kicker">Resultados</p>
+            <h2>Qué muestra el relevamiento</h2>
+          </div>
+          <p>Los datos expresan valoraciones positivas sobre los espacios y, al mismo tiempo, desafíos para sostener económicamente a las unidades productivas.</p>
+        </div>
+
+        <div class="results-grid">
+          <article class="result"><strong>86%</strong><p>consideró accesibles o muy accesibles los precios.</p></article>
+          <article class="result"><strong>84%</strong><p>manifestó haber recomendado estos espacios.</p></article>
+          <article class="result"><strong>100%</strong><p>asoció conocer a quien produce con el consumo consciente.</p></article>
+          <article class="result"><strong>79%</strong><p>de productores/as integra una asociación, grupo o cooperativa.</p></article>
+          <article class="result"><strong>84%</strong><p>obtiene mediante estos canales menos de la mitad de sus ingresos.</p></article>
+          <article class="result"><strong>83%</strong><p>de horticultores/as es agroecológico o se encuentra en transición.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="words-section" aria-labelledby="palabras-titulo">
+      <div class="section-inner">
+        <p class="section-kicker">Respuestas abiertas</p>
+        <h2 id="palabras-titulo">Las palabras que identifican estos espacios</h2>
+
+        <div class="word-groups">
+          <div class="word-group">
+            <h3>Productores/as y comercializadores/as</h3>
+            <div class="word-cloud" aria-label="Comunidad, cooperación y trabajo compartido">
+              <span class="word-lg">comunidad</span>
+              <span class="word-md">cooperación</span>
+              <span class="word-sm">trabajo compartido</span>
+            </div>
+          </div>
+          <div class="word-group">
+            <h3>Consumidores/as</h3>
+            <div class="word-cloud" aria-label="Calidad, alimentación y accesibilidad">
+              <span class="word-lg">calidad</span>
+              <span class="word-md">alimentación</span>
+              <span class="word-sm">accesibilidad</span>
+            </div>
+          </div>
+        </div>
+        <p class="word-note">Principales asociaciones identificadas en las respuestas abiertas. El tamaño de las palabras organiza la composición visual y no representa una frecuencia exacta.</p>
+      </div>
+    </section>
+
+    <section class="conclusions" id="hallazgos">
+      <div class="section-inner">
+        <p class="section-kicker">Hallazgos</p>
+        <h2>Funciones múltiples, vínculos cercanos y desafíos pendientes</h2>
+
+        <div class="conclusion-grid">
+          <article class="conclusion">
+            <h3>Más que una transacción</h3>
+            <p>Los espacios combinan funciones económicas, sociales, organizativas y formativas.</p>
+          </article>
+          <article class="conclusion">
+            <h3>Confianza y proximidad</h3>
+            <p>El vínculo con quienes producen aporta información y fortalece formas de consumo consciente.</p>
+          </article>
+          <article class="conclusion">
+            <h3>Sostenibilidad económica</h3>
+            <p>Son una alternativa valiosa a la intermediación convencional, aunque todavía presentan límites para sostener por sí solos los ingresos familiares.</p>
+          </article>
+        </div>
+
+        <p class="closing">No son solo canales de venta: construyen comunidad y organización. Fortalecerlos es ampliar mercados más justos y sostenibles.</p>
+      </div>
+    </section>
+
+    <section class="method" aria-labelledby="metodo-titulo">
+      <div class="section-inner">
+        <div>
+          <p class="section-kicker">Base del estudio</p>
+          <h2 id="metodo-titulo">Un relevamiento con múltiples voces</h2>
+        </div>
+        <p>Se realizaron 70 encuestas a consumidores/as, productores/as y comercializadores/as durante 2026. Los resultados cuantitativos se analizaron junto con las respuestas abiertas y las particularidades de cada experiencia.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p class="project-credit">Proyecto <strong>“Fortalecimiento de entramados productivos locales: Análisis de estrategias de innovación para la producción, agregado de valor y comercialización de la Agricultura Familiar de La Plata y Gran La Plata”</strong> de <strong>la CONVOCATORIA DE IDEAS-PROYECTOS DE INVESTIGACIÓN, DESARROLLO y TRANSFERENCIA</strong> Soluciones Científico-Tecnológicas para Áreas del Gobierno Provincial - IP2024-2025.</p>
+      <p class="footer-institution">Facultad de Ciencias Veterinarias · UNLP</p>
+    </div>
+  </footer>
+</body>
+</html>
